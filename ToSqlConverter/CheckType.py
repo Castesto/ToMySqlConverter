@@ -3,11 +3,10 @@ import datetime as dt
 
 class CheckType:
 
-    __TYPE = ["string", "float", "int", "datetime", "nan"]
+    _TYPE = ["string", "float", "int", "datetime", "nan"]
     __p = "none"
 
     def __init__(self, argument):
-        print("инициализируем")
         if argument == self.__TYPE[4]:
             self.__p = self.__TYPE[4]
         elif self.__is_date(argument):

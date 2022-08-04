@@ -1,6 +1,4 @@
 class TextReader:
-    __text_line_massive: str = []
-    __path: str = ""
 
     def __init__(self, path: str, split_argument: str):
         self.__text_line_massive: str = []
