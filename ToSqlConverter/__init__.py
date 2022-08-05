@@ -1,3 +1,3 @@
-from .CheckType import *
-from.TextReader import *
+from ToSqlConverter.CheckType import *
+from ToSqlConverter.TextReader import *
 

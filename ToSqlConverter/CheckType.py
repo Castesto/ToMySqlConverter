@@ -4,21 +4,21 @@ import datetime as dt
 class CheckType:
 
     _TYPE = ["string", "float", "int", "datetime", "nan"]
-    __p = "none"
+    _p = "none"
 
     def __init__(self, argument):
-        if argument == self.__TYPE[4]:
-            self.__p = self.__TYPE[4]
+        if argument == self._TYPE[4]:
+            self._p = self._TYPE[4]
         elif self.__is_date(argument):
-            self.__p = self.__TYPE[3]
+            self._p = self._TYPE[3]
         elif self.__is_int(argument):
-            self.__p = self.__TYPE[2]
+            self._p = self._TYPE[2]
         elif self.__is_float(argument):
-            self.__p = self.__TYPE[1]
+            self._p = self._TYPE[1]
         elif self.__is_string(argument):
-            self.__p = self.__TYPE[0]
+            self._p = self._TYPE[0]
         else:
-            self.__p = "No matches"
+            self._p = "No matches"
 
     def __is_int(self, argument) -> bool:
         try:
@@ -34,7 +34,7 @@ class CheckType:
 
     def __is_date(self, argument) -> bool:
         try:
-            date_formatter = "%d-%m-%Y %H:%M:%S"
+            date_formatter = "%Y-%m-%d %H:%M:%S"
             dt.datetime.strptime(argument, date_formatter)
             return True
         except ValueError:
@@ -47,7 +47,7 @@ class CheckType:
             return False
 
     def get_p(self) -> str:
-        return self.__p
+        return self._p
 
 
 
