@@ -4,7 +4,7 @@ import datetime as dt
 class CheckType:
 
     _TYPE = ["string", "float", "int", "datetime", "nan"]
-    _p = "none"
+    _p: str = "none"
 
     def __init__(self, argument):
         if argument == self._TYPE[4]:

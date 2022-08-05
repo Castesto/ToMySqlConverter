@@ -17,11 +17,12 @@ class CheckTypeMassive(CheckType, TextReader):
 
     def create_type_massive(self):
         massive = self._text_line_massive
-
-        for i in range(len(massive)):
+        for i in range(len(massive)-1):
             type_massive_line = []
-            self._type_massive.append(type_massive_line)
             for j in range(len(massive[i])):
-                type_massive_line.append(massive[i][j])
-                print(massive[i][j], end=' ')
+                type_massive_line.append(CheckType(massive[i][j]).get_p())
+                if j == range(len(massive[i]))[-1]:
+                    self._type_massive.append(type_massive_line)
+                    print(self._type_massive[i], end=' ')
+            print()
 
