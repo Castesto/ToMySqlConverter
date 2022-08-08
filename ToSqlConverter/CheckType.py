@@ -3,22 +3,11 @@ import datetime as dt
 
 class CheckType:
 
-    _TYPE = ["string", "float", "int", "datetime", "nan"]
+    _TYPE_PRIORITY = ["datetime", "float", "int", "string", "nan"]
     _p: str = "none"
 
     def __init__(self, argument):
-        if argument == self._TYPE[4]:
-            self._p = self._TYPE[4]
-        elif self.__is_date(argument):
-            self._p = self._TYPE[3]
-        elif self.__is_int(argument):
-            self._p = self._TYPE[2]
-        elif self.__is_float(argument):
-            self._p = self._TYPE[1]
-        elif self.__is_string(argument):
-            self._p = self._TYPE[0]
-        else:
-            self._p = "No matches"
+        self._p: str = self.__check_type(argument)
 
     def __is_int(self, argument) -> bool:
         try:
@@ -37,6 +26,8 @@ class CheckType:
             date_formatter = "%Y-%m-%d %H:%M:%S"
             dt.datetime.strptime(argument, date_formatter)
             return True
+        except TypeError:
+            return False
         except ValueError:
             return False
 
@@ -49,6 +40,17 @@ class CheckType:
     def get_p(self) -> str:
         return self._p
 
-
-
+    def __check_type(self, argument):
+        if argument == self._TYPE_PRIORITY[4]:
+            return self._TYPE_PRIORITY[4]
+        elif self.__is_date(argument):
+            return self._TYPE_PRIORITY[0]
+        elif self.__is_int(argument):
+            return self._TYPE_PRIORITY[2]
+        elif self.__is_float(argument):
+            return self._TYPE_PRIORITY[1]
+        elif self.__is_string(argument):
+            return self._TYPE_PRIORITY[3]
+        else:
+            return "No matches"
 
