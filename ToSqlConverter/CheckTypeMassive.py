@@ -6,7 +6,7 @@ class CheckTypeMassive(CheckType, TextReader):
     _type_massive_index = []
     _type_line_list = []
 
-    def __init__(self, path, split_argument):
+    def __init__(self, path, split_argument) -> None:
         TextReader.__init__(self, path, split_argument)
         self.create_type_massive()
 
