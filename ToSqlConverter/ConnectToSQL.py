@@ -1,5 +1,5 @@
 from __future__ import print_function
-from ToSqlConverter.ColumnTables import ColumnTables
+from ToSqlConverter.ColumnTables import get_columns
 import mysql.connector
 from mysql.connector.connection_cext import CMySQLConnection
 from mysql.connector.cursor_cext import CMySQLCursor
@@ -37,9 +37,18 @@ class ConnectToSql:
         )
         """
 
-    def insert_into_table(self) -> None:
-        sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+    def insert_into_table(self, table_name: str, data_massive: []) -> None:
+        columns = getattr(get_columns(), table_name)
+        count_column = ", ".join(["%s"] * len(columns))
+        names_column = ", ".join(columns)
+        sql = f"INSERT INTO {table_name} ({names_column}) VALUES ({count_column})"
+        for i in range(len(data_massive)-1):
+            val = data_massive[i]
+            self.__cursor.execute(sql, val)
+            self.__cnx.commit()
 
 
-p = ConnectToSql('root', 'password', 'localhost', 'product')
+
+
+
 

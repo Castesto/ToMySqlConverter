@@ -3,8 +3,9 @@ import datetime as dt
 
 class CheckType:
 
-    _TYPE_PRIORITY = ["datetime", "float", "int", "string", "nan"]
+    _TYPE_PRIORITY = ["datetime", "float", "int", "string", "Null"]
     _p: str
+    _date_formatter = "%Y-%m-%d %H:%M:%S"
 
     def __init__(self, argument: str):
         self._p: str = self.__check_type(argument)

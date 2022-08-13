@@ -1,4 +1,3 @@
-
 from dataclasses import dataclass
 
 
@@ -19,6 +18,3 @@ def get_columns() -> ColumnTables:
         "transactions": ["USER_ID", "ID_TRANSACTION", "ID_STORE", "ID_PRODUCT", "DATE", "UNIQUE_ID"]
     })
 
-
-tables = get_columns()
-print(', '.join(tables.products_data_all))

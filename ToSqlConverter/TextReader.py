@@ -1,5 +1,5 @@
 class TextReader:
-    _text_data_massive: str = []
+    _text_data_massive: str = ()
 
     def __init__(self, path: str, split_argument: str) -> None:
         self._text_data_massive: str = []
